@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Split Bill Calculator — Divide Bill & Tip Equally | Tabutility</title>
+  <meta name="description" content="Split any bill equally between friends. Add a tip, split unevenly, and see exactly what each person owes. Free split bill calculator — instant results."/>
+  <link rel="canonical" href="https://split-bill-calculator.tabutility.com/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://split-bill-calculator.tabutility.com/"/>
+  <meta property="og:title" content="Split Bill Calculator — Divide Bill & Tip Equally"/>
+  <meta property="og:description" content="Split any bill equally between friends. Add a tip, split unevenly, and see exactly what each person owes."/>
+  <meta property="og:site_name" content="Tabutility"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>"/>
+  <meta name="theme-color" content="#1a1a2e"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Split Bill Calculator","url":"https://split-bill-calculator.tabutility.com/","description":"Split any bill equally between friends. Add a tip and see exactly what each person owes.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"Tabutility","url":"https://tabutility.com"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7039091592734005" crossorigin="anonymous"></script>
+  <script>window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-78VZWJ5B1W';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','G-78VZWJ5B1W');});</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6}
+    a{color:#4f46e5;text-decoration:none}
+    nav{background:#1a1a2e;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+    .nav-brand{color:#fff;font-size:18px;font-weight:800}
+    .nav-links a{color:rgba(255,255,255,0.8);font-size:14px;margin-left:20px;font-weight:500}
+    .hero{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:40px 20px 32px;text-align:center}
+    .hero h1{font-size:clamp(24px,4vw,38px);font-weight:900;margin:0 0 10px}
+    .hero p{color:rgba(255,255,255,0.75);margin:0;font-size:16px}
+    .wrap{max-width:680px;margin:0 auto;padding:32px 20px 60px}
+    .card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 16px rgba(0,0,0,0.07);margin-bottom:24px;border:1.5px solid #e8ecf2}
+    .card h2{font-size:18px;font-weight:800;margin:0 0 20px}
+    label{display:block;font-size:13px;font-weight:600;color:#64748b;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.4px}
+    .input-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+    @media(max-width:500px){.input-row{grid-template-columns:1fr}}
+    .prefix-wrap{position:relative}
+    .prefix{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#64748b;font-weight:700;font-size:18px;pointer-events:none}
+    input[type=number]{width:100%;padding:12px 14px 12px 32px;border:2px solid #e2e8f0;border-radius:10px;font-size:18px;font-weight:700;color:#1e293b;background:#f8fafc;outline:none;transition:border 0.2s}
+    input.no-prefix{padding-left:14px}
+    input[type=number]:focus{border-color:#4f46e5;background:#fff}
+    .tip-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+    .tip-btn{padding:8px 14px;border:2px solid #e2e8f0;border-radius:10px;background:#fff;cursor:pointer;font-size:14px;font-weight:700;color:#64748b;transition:all 0.15s}
+    .tip-btn.active{border-color:#4f46e5;background:#4f46e5;color:#fff}
+    .people-stepper{display:flex;align-items:center;gap:12px}
+    .step-btn{width:40px;height:40px;border:2px solid #e2e8f0;border-radius:10px;background:#fff;cursor:pointer;font-size:22px;font-weight:700;color:#4f46e5;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
+    .step-btn:hover{background:#4f46e5;color:#fff;border-color:#4f46e5}
+    .people-num{font-size:28px;font-weight:900;min-width:40px;text-align:center}
+    .result-hero{background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:14px;padding:28px;text-align:center;color:#fff;margin-bottom:20px}
+    .result-per{font-size:clamp(36px,8vw,56px);font-weight:900;line-height:1}
+    .result-sub{font-size:15px;opacity:0.85;margin-top:8px;font-weight:600}
+    .breakdown-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #e2e8f0;font-size:15px}
+    .breakdown-row:last-child{border-bottom:none;font-weight:800;font-size:16px}
+    .ad-wrap{margin:20px 0;text-align:center;min-height:90px;background:#f8fafc;border-radius:8px}
+    footer{background:#1a1a2e;color:rgba(255,255,255,0.6);text-align:center;padding:24px 20px;font-size:14px}
+    footer a{color:#818cf8}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="https://tabutility.com" class="nav-brand">⚡ Tabutility</a>
+  <div class="nav-links">
+    <a href="https://tabutility.com">All Tools</a>
+    <a href="https://tabutility.com/blog/">Blog</a>
+  </div>
+</nav>
+<div class="hero">
+  <h1>🍽️ Split Bill Calculator</h1>
+  <p>Divide a restaurant bill or any expense equally — with tip</p>
+</div>
+<div class="wrap">
+  <div class="card">
+    <h2>Bill Details</h2>
+    <div class="input-row">
+      <div>
+        <label>Bill Amount</label>
+        <div class="prefix-wrap">
+          <span class="prefix">£</span>
+          <input type="number" id="bill" placeholder="0.00" min="0" step="0.01" oninput="calc()" value="100"/>
+        </div>
+      </div>
+      <div>
+        <label>Currency Symbol</label>
+        <div class="prefix-wrap">
+          <input type="text" id="currency" class="no-prefix" placeholder="£" maxlength="3" oninput="updateCurrency(this.value)" value="£" style="padding:12px 14px;border:2px solid #e2e8f0;border-radius:10px;font-size:18px;font-weight:700;width:100%;background:#f8fafc;outline:none"/>
+        </div>
+      </div>
+    </div>
+
+    <label>Tip</label>
+    <div class="tip-btns">
+      <button class="tip-btn" onclick="setTip(0,this)">No tip</button>
+      <button class="tip-btn" onclick="setTip(10,this)">10%</button>
+      <button class="tip-btn active" onclick="setTip(15,this)">15%</button>
+      <button class="tip-btn" onclick="setTip(20,this)">20%</button>
+      <button class="tip-btn" onclick="setTip(25,this)">25%</button>
+    </div>
+    <div class="prefix-wrap" style="margin-bottom:16px">
+      <span class="prefix">%</span>
+      <input type="number" id="tip-pct" placeholder="15" min="0" max="100" step="1" oninput="calc()" value="15" style="padding-left:32px"/>
+    </div>
+
+    <label>Number of People</label>
+    <div class="people-stepper">
+      <button class="step-btn" onclick="changePeople(-1)">−</button>
+      <span class="people-num" id="people-num">4</span>
+      <button class="step-btn" onclick="changePeople(1)">+</button>
+      <span style="font-size:14px;color:#64748b;font-weight:600" id="people-label">people</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="result-hero">
+      <div class="result-per"><span id="curr-sym">£</span><span id="per-person">—</span></div>
+      <div class="result-sub" id="per-label">per person</div>
+    </div>
+    <div class="breakdown-row"><span>Bill subtotal</span><span id="b-subtotal">—</span></div>
+    <div class="breakdown-row"><span>Tip (<span id="b-tip-pct">15</span>%)</span><span id="b-tip-amt">—</span></div>
+    <div class="breakdown-row"><span>Total bill</span><span id="b-total">—</span></div>
+    <div class="breakdown-row"><span>Each person pays</span><span id="b-per">—</span></div>
+  </div>
+
+  <div class="ad-wrap">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7039091592734005" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+</div>
+<footer>
+  <p>© 2025 <a href="https://tabutility.com">Tabutility</a> — Free Online Tools</p>
+</footer>
+<script>
+  let people = 4;
+  let tipPct = 15;
+  let currency = '£';
+
+  function updateCurrency(val){ currency=val||'£'; document.getElementById('curr-sym').textContent=currency; document.querySelectorAll('.prefix')[0].textContent=currency; calc(); }
+  function setTip(pct,el){ document.querySelectorAll('.tip-btn').forEach(b=>b.classList.remove('active')); el.classList.add('active'); document.getElementById('tip-pct').value=pct; tipPct=pct; calc(); }
+  function changePeople(d){ people=Math.max(1,Math.min(50,people+d)); document.getElementById('people-num').textContent=people; document.getElementById('people-label').textContent=people===1?'person':'people'; calc(); }
+
+  function calc(){
+    const bill=parseFloat(document.getElementById('bill').value)||0;
+    const tip=parseFloat(document.getElementById('tip-pct').value)||0;
+    tipPct=tip;
+    document.getElementById('b-tip-pct').textContent=tip;
+    const tipAmt=bill*(tip/100);
+    const total=bill+tipAmt;
+    const per=total/people;
+
+    const f=(n)=>currency+n.toFixed(2);
+    document.getElementById('per-person').textContent=per.toFixed(2);
+    document.getElementById('per-label').textContent=`each of ${people} ${people===1?'person':'people'} pays`;
+    document.getElementById('b-subtotal').textContent=f(bill);
+    document.getElementById('b-tip-amt').textContent=f(tipAmt);
+    document.getElementById('b-total').textContent=f(total);
+    document.getElementById('b-per').textContent=f(per);
+  }
+  calc();
+</script>
+</body>
+</html>
